@@ -8,6 +8,7 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [list, setList] = useState([]);
   const [filteredList, setFilteredList] = useState();
+  const [selectedItem, setSelectedItem] = useState();
   const getList = () => {
     setLoading(true);
     axios({
@@ -18,17 +19,26 @@ const Home = () => {
   useEffect(() => {
     getList();
     setLoading(false);
-    console.log(list);
+
     return () => {};
   }, []);
 
   const onSubmit = async (data) => {
     try {
       setLoading(true);
-      const res = await axios.post("http://localhost:3002/posts/", {
-        data,
-      });
-      setList([...list, res.data.data]);
+      if (selectedItem) {
+        const res = await axios.put(
+          `http://localhost:3002/posts/${selectedItem.id}`,
+          {
+            data,
+          }
+        );
+      } else {
+        const res = await axios.post("http://localhost:3002/posts/", {
+          data,
+        });
+      }
+
       togglePopup();
       getList();
     } catch (err) {
@@ -55,7 +65,15 @@ const Home = () => {
 
   const togglePopup = () => {
     setIsOpen(!isOpen);
+    if (isOpen) {
+      setSelectedItem();
+    }
   };
+  const handleSelectedItemChange = (item) => {
+    setSelectedItem({ ...item.data, id: item.id });
+    setIsOpen(true);
+  };
+
   return (
     <>
       <h1>Listeye Eleman Ekle</h1>
@@ -74,6 +92,8 @@ const Home = () => {
               <AddNewListItem
                 onSubmit={(data) => onSubmit(data)}
                 handleClose={togglePopup}
+                title={selectedItem?.title}
+                body={selectedItem?.body}
               />
             </>
           }
@@ -81,7 +101,11 @@ const Home = () => {
         />
       )}
 
-      <List list={list} deleteData={(id) => deleteData(id)} />
+      <List
+        list={list}
+        deleteData={(id) => deleteData(id)}
+        onSelectedItemChange={(item) => handleSelectedItemChange(item)}
+      />
     </>
   );
 };

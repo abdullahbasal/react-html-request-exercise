@@ -11,7 +11,7 @@ const AddNewListItem = (props) => {
   const onSubmit = (data) => {
     props.onSubmit(data);
   };
-
+  console.log(props);
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -21,6 +21,7 @@ const AddNewListItem = (props) => {
           placeholder="Başlık (Gerekli)"
           {...register("title", {
             required: true,
+            value: props.title,
             max: 20,
             minLength: 5,
             maxLength: 20,
@@ -39,6 +40,7 @@ const AddNewListItem = (props) => {
           placeholder="Yazınız (Gerekli)"
           {...register("body", {
             required: true,
+            value: props.body,
             minLength: 3,
             maxLength: 20,
             pattern: /[a-zA-Z - zöçİğüÖÇĞÜşŞ]/i,

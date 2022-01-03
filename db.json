@@ -1,0 +1,15 @@
+{
+  "posts": [
+    {
+      "data": {
+        "title": "abdullah",
+        "body": "abdullah"
+      },
+      "id": 1
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}
