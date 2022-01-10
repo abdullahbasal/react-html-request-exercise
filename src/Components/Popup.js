@@ -9,6 +9,9 @@ const Popup = (props) => {
         </span>
         {props.content}
       </div>
+      {/* <div>
+        <button>Sil</button> <button>Vazgeç</button>
+      </div> */}
     </div>
   );
 };

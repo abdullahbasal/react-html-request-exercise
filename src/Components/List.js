@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 
 import "../Styles/List.css";
-import Popup from "./Popup";
+
 const List = (props) => {
   function deleteData(id) {
     props.deleteData(id);

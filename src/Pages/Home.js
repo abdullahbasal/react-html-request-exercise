@@ -1,14 +1,17 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import AddNewListItem from "../Components/AddNewListItem";
+import Form from "../Components/Form";
 import List from "../Components/List";
 import Popup from "../Components/Popup";
 import "../Styles/Home.css";
 const Home = () => {
-  const [loading, setLoading] = useState(false);
+  const [, setLoading] = useState(false);
   const [list, setList] = useState([]);
-  const [filteredList, setFilteredList] = useState();
   const [selectedItem, setSelectedItem] = useState();
+  const [popupText, setPopupText] = useState({
+    popupHeader: "",
+    popupText: "",
+  });
   const getList = () => {
     setLoading(true);
     axios({
@@ -27,14 +30,11 @@ const Home = () => {
     try {
       setLoading(true);
       if (selectedItem) {
-        const res = await axios.put(
-          `http://localhost:3002/posts/${selectedItem.id}`,
-          {
-            data,
-          }
-        );
+        await axios.put(`http://localhost:3002/posts/${selectedItem.id}`, {
+          data,
+        });
       } else {
-        const res = await axios.post("http://localhost:3002/posts/", {
+        await axios.post("http://localhost:3002/posts/", {
           data,
         });
       }
@@ -47,6 +47,10 @@ const Home = () => {
       setLoading(false);
     }
   };
+
+  // const deletePopup = () => {
+  //   setIsOpen(true);
+  // };
   const deleteData = async (id) => {
     try {
       setLoading(true);
@@ -67,10 +71,19 @@ const Home = () => {
     setIsOpen(!isOpen);
     if (isOpen) {
       setSelectedItem();
+    } else {
+      setPopupText({
+        popupHeader: "Listeye Öğe Ekle",
+        popupText: "Eklemek yapacağınız alanları eksik ve hatasız doldurunuz.",
+      });
     }
   };
   const handleSelectedItemChange = (item) => {
     setSelectedItem({ ...item.data, id: item.id });
+    setPopupText({
+      popupHeader: "Seçili Öğeyi Düzenle",
+      popupText: "Düzenlemek istediğiniz alanları eksik ve hatasız doldurunuz.",
+    });
     setIsOpen(true);
   };
 
@@ -87,9 +100,9 @@ const Home = () => {
         <Popup
           content={
             <>
-              <b>Listeye Eleman Ekle</b>
-              <p>Listeye Eleman Eklemek için eksiksiz ve hatasız doldurunuz.</p>
-              <AddNewListItem
+              <b>{popupText.popupHeader}</b>
+              <p>{popupText.popupText}</p>
+              <Form
                 onSubmit={(data) => onSubmit(data)}
                 handleClose={togglePopup}
                 title={selectedItem?.title}

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
-import "../Styles/AddNewListItem.css";
-const AddNewListItem = (props) => {
+import "../Styles/Form.css";
+const Form = (props) => {
   const {
     register,
     handleSubmit,
@@ -52,7 +52,7 @@ const AddNewListItem = (props) => {
           </p>
         )}
 
-        <button type="submit" className="submit" className="submit-button">
+        <button type="submit" className="submit-button submit">
           Gönder
         </button>
       </form>
@@ -60,4 +60,4 @@ const AddNewListItem = (props) => {
   );
 };
 
-export default AddNewListItem;
+export default Form;

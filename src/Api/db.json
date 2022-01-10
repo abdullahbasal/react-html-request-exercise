@@ -1,11 +1,3 @@
 {
-  "posts": [
-    {
-      "data": {
-        "title": "denemebaslik",
-        "body": "denemeyazi"
-      },
-      "id": 6
-    }
-  ]
+  "posts": []
 }
