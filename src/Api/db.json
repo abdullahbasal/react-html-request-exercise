@@ -1,3 +1,11 @@
 {
-  "posts": []
+  "posts": [
+    {
+      "data": {
+        "title": "ekleme",
+        "body": "ekleme"
+      },
+      "id": 2
+    }
+  ]
 }

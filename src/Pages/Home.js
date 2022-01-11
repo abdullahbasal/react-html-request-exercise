@@ -8,10 +8,9 @@ const Home = () => {
   const [, setLoading] = useState(false);
   const [list, setList] = useState([]);
   const [selectedItem, setSelectedItem] = useState();
-  const [popupText, setPopupText] = useState({
-    popupHeader: "",
-    popupText: "",
-  });
+  const [selectedId, setSelectedId] = useState();
+  const [display, setDisplay] = useState(true);
+  const [popupText, setPopupText] = useState({});
   const getList = () => {
     setLoading(true);
     axios({
@@ -48,15 +47,22 @@ const Home = () => {
     }
   };
 
-  // const deletePopup = () => {
-  //   setIsOpen(true);
-  // };
-  const deleteData = async (id) => {
+  const deletePopup = (id) => {
+    setDisplay(false);
+    setIsOpen(true);
+    setPopupText({
+      popupHeader: "Seçili Öğeyi Sil",
+      popupText: "Öğeyi Silmek istediğinize emin misin?",
+    });
+    setSelectedId(id);
+  };
+  const deleteData = async (selectedId) => {
     try {
       setLoading(true);
-      await axios.delete(`http://localhost:3002/posts/${id}`);
-      const filteredList = list.filter((item) => item.d !== id);
+      await axios.delete(`http://localhost:3002/posts/${selectedId}`);
+      const filteredList = list.filter((item) => item.d !== selectedId);
       setList(filteredList);
+      togglePopup();
       getList();
     } catch (error) {
       console.log(error);
@@ -69,9 +75,13 @@ const Home = () => {
 
   const togglePopup = () => {
     setIsOpen(!isOpen);
+
     if (isOpen) {
+      setDisplay(true);
       setSelectedItem();
     } else {
+      setDisplay(true);
+
       setPopupText({
         popupHeader: "Listeye Öğe Ekle",
         popupText: "Eklemek yapacağınız alanları eksik ve hatasız doldurunuz.",
@@ -102,12 +112,30 @@ const Home = () => {
             <>
               <b>{popupText.popupHeader}</b>
               <p>{popupText.popupText}</p>
-              <Form
-                onSubmit={(data) => onSubmit(data)}
-                handleClose={togglePopup}
-                title={selectedItem?.title}
-                body={selectedItem?.body}
-              />
+              {display && (
+                <Form
+                  onSubmit={(data) => onSubmit(data)}
+                  handleClose={togglePopup}
+                  title={selectedItem?.title}
+                  body={selectedItem?.body}
+                />
+              )}
+              {!display && (
+                <div>
+                  <button
+                    className="delete-button"
+                    onClick={() => deleteData(selectedId)}
+                  >
+                    Sil
+                  </button>
+                  <button
+                    className="cancel-button"
+                    onClick={() => togglePopup()}
+                  >
+                    Vazgeç
+                  </button>
+                </div>
+              )}
             </>
           }
           handleClose={togglePopup}
@@ -116,7 +144,7 @@ const Home = () => {
 
       <List
         list={list}
-        deleteData={(id) => deleteData(id)}
+        deletePopup={(id) => deletePopup(id)}
         onSelectedItemChange={(item) => handleSelectedItemChange(item)}
       />
     </>

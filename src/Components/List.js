@@ -3,8 +3,8 @@ import React from "react";
 import "../Styles/List.css";
 
 const List = (props) => {
-  function deleteData(id) {
-    props.deleteData(id);
+  function deletePopup(id) {
+    props.deletePopup(id);
   }
 
   return (
@@ -21,7 +21,7 @@ const List = (props) => {
               <span>{item.data?.body}</span>
             </li>
             <div className="trash-box-container">
-              <div className="trash-box" onClick={() => deleteData(item.id)}>
+              <div className="trash-box" onClick={() => deletePopup(item.id)}>
                 <div className="trash"></div>
                 <div className="trash-top"></div>
                 <div className="trash-btm">
