@@ -24,16 +24,17 @@
 
 .close-icon {
   content: "x";
+  color: white;
   cursor: pointer;
   position: fixed;
   right: calc(30% - 33px);
   top: calc(100vh - 85vh - 33px);
-  background: #ededed;
+  background: red;
   width: 25px;
   height: 25px;
   border-radius: 50%;
   line-height: 20px;
   text-align: center;
-  border: 1px solid #999;
+  border: 1px solid red;
   font-size: 20px;
 }

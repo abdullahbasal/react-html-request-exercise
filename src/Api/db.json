@@ -2,10 +2,136 @@
   "posts": [
     {
       "data": {
-        "title": "ekleme",
-        "body": "ekleme"
+        "title": "asdasdada",
+        "body": "asdasdasdasd"
       },
-      "id": 2
+      "id": 3
+    },
+    {
+      "data": {
+        "title": "birol",
+        "body": "birol"
+      },
+      "id": 6
+    },
+    {
+      "data": {
+        "title": "okans",
+        "body": "okans"
+      },
+      "id": 7
+    },
+    {
+      "data": {
+        "title": "büşra",
+        "body": "büşra"
+      },
+      "id": 8
+    },
+    {
+      "data": {
+        "title": "ardaa",
+        "body": "ardaa"
+      },
+      "id": 9
+    },
+    {
+      "data": {
+        "title": "emirr",
+        "body": "emirr"
+      },
+      "id": 10
+    },
+    {
+      "data": {
+        "title": "fener",
+        "body": "fener"
+      },
+      "id": 11
+    },
+    {
+      "data": {
+        "title": "fenerbahçe",
+        "body": "fenerbahçe"
+      },
+      "id": 12
+    },
+    {
+      "data": {
+        "title": "fenerliler",
+        "body": "fenerliler"
+      },
+      "id": 13
+    },
+    {
+      "data": {
+        "title": "abdulhamit",
+        "body": "abdulhamit"
+      },
+      "id": 14
+    },
+    {
+      "data": {
+        "title": "abdulkerim",
+        "body": "abdulkerim"
+      },
+      "id": 15
+    },
+    {
+      "data": {
+        "title": "abdullah",
+        "body": "abdullah"
+      },
+      "id": 16
+    },
+    {
+      "data": {
+        "title": "köpek",
+        "body": "köpek"
+      },
+      "id": 17
+    },
+    {
+      "data": {
+        "title": "kedii",
+        "body": "kedii"
+      },
+      "id": 18
+    },
+    {
+      "data": {
+        "title": "kurbağa",
+        "body": "kurbağa"
+      },
+      "id": 19
+    },
+    {
+      "data": {
+        "title": "kuşşş",
+        "body": "kuşşş"
+      },
+      "id": 20
+    },
+    {
+      "data": {
+        "title": "kelepçe",
+        "body": "kelepçe"
+      },
+      "id": 21
+    },
+    {
+      "data": {
+        "title": "köprü",
+        "body": "köprü"
+      },
+      "id": 22
+    },
+    {
+      "data": {
+        "title": "hgjghjghj",
+        "body": "ghjghjghj"
+      },
+      "id": 23
     }
   ]
 }
